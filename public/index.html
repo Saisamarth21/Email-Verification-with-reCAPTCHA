@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Email Authentication</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Email OTP Verification</h1>
+
+        <form id="verificationForm">
+            <div class="input-group">
+                <label for="firstName">First Name:</label>
+                <input type="text" id="firstName" placeholder="Enter your first name" required>
+            </div>
+
+            <div class="input-group">
+                <label for="lastName">Last Name:</label>
+                <input type="text" id="lastName" placeholder="Enter your last name" required>
+            </div>
+
+            <div class="input-group">
+                <label for="email">Email Address:</label>
+                <input type="email" id="email" placeholder="Enter your email" required>
+            </div>
+
+            <!-- Email OTP Button -->
+            <div class="pe_verify_email" data-client-id="15006103888230236037">
+                <script src="https://www.phone.email/verify_email_v1.js" async></script>
+            </div>
+        </form>
+
+        <div id="result" class="hidden">
+            <h2>Verification Success!</h2>
+            <p id="userName"></p>
+            <p id="verifiedEmail"></p>
+        </div>
+
+        <script src="script.js"></script>
+    </div>
+</body>
+</html>
