@@ -5,6 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Email Authentication</title>
     <link rel="stylesheet" href="style.css">
+    <!-- Add reCAPTCHA script -->
+    <script src="https://www.google.com/recaptcha/api.js" async defer></script>
 </head>
 <body>
     <div class="container">
@@ -25,6 +27,9 @@
                 <label for="email">Email Address:</label>
                 <input type="email" id="email" placeholder="Enter your email" required>
             </div>
+
+            <!-- Add reCAPTCHA widget -->
+            <div class="g-recaptcha" data-sitekey="6Lf32GkqAAAAAE0JVN862Gkz9c702lXoNN0mqF0e"></div>
 
             <!-- Email OTP Button -->
             <div class="pe_verify_email" data-client-id="15006103888230236037">
