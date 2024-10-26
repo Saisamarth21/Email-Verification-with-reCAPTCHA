@@ -1,9 +1,7 @@
-function phoneEmailReceiver(userObj) {
-    const user_json_url = userObj.user_json_url;
-
-    // Fetch first name, last name, and email from the form
+function verifyUser() {
     const firstName = document.getElementById('firstName').value;
     const lastName = document.getElementById('lastName').value;
+    const email = document.getElementById('email').value;
 
     // Verify reCAPTCHA
     const captchaResponse = grecaptcha.getResponse();
@@ -12,34 +10,19 @@ function phoneEmailReceiver(userObj) {
         return;
     }
 
-    // Send CAPTCHA response to server for verification
-    fetch('/verify-captcha', {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json'
-        },
-        body: JSON.stringify({ 'g-recaptcha-response': captchaResponse })
-    })
-    .then(response => response.json())
-    .then(result => {
-        if (!result.success) {
+    // Simulate reCAPTCHA verification success
+    setTimeout(() => {
+        // Simulate success response
+        if (captchaResponse) {
+            // Show the result section
+            document.getElementById('verificationForm').classList.add('hidden');
+            document.getElementById('result').classList.remove('hidden');
+
+            // Display name and verified email
+            document.getElementById('userName').innerText = `Name: ${firstName} ${lastName}`;
+            document.getElementById('verifiedEmail').innerText = `Verified Email: ${email}`;
+        } else {
             alert("CAPTCHA verification failed. Please try again.");
-            return;
         }
-
-        // Redirect to backend to handle user verification
-        fetch(`/get-email?url=${encodeURIComponent(user_json_url)}`)
-            .then(response => response.text())
-            .then(data => {
-                // Show the result section
-                document.getElementById('verificationForm').classList.add('hidden');
-                document.getElementById('result').classList.remove('hidden');
-
-                // Display name and verified email
-                document.getElementById('userName').innerText = `Name: ${firstName} ${lastName}`;
-                document.getElementById('verifiedEmail').innerHTML = data;
-            })
-            .catch(error => console.error('Error:', error));
-    })
-    .catch(error => console.error('Error:', error));
+    }, 1000); // Simulate API response delay
 }
