@@ -1,7 +1,8 @@
-function verifyUser() {
+function phoneEmailReceiver(userObj) {
+    const user_json_url = userObj.user_json_url;
+
     const firstName = document.getElementById('firstName').value;
     const lastName = document.getElementById('lastName').value;
-    const email = document.getElementById('email').value;
 
     // Verify reCAPTCHA
     const captchaResponse = grecaptcha.getResponse();
@@ -10,19 +11,29 @@ function verifyUser() {
         return;
     }
 
-    // Simulate reCAPTCHA verification success
+    // Simulate reCAPTCHA verification
     setTimeout(() => {
-        // Simulate success response
         if (captchaResponse) {
-            // Show the result section
-            document.getElementById('verificationForm').classList.add('hidden');
-            document.getElementById('result').classList.remove('hidden');
+            // Fetch the verified email using the user_json_url
+            fetch(user_json_url)
+                .then(response => response.json())
+                .then(data => {
+                    const user_email_id = data.user_email_id;
 
-            // Display name and verified email
-            document.getElementById('userName').innerText = `Name: ${firstName} ${lastName}`;
-            document.getElementById('verifiedEmail').innerText = `Verified Email: ${email}`;
+                    // Show the result section
+                    document.getElementById('verificationForm').classList.add('hidden');
+                    document.getElementById('result').classList.remove('hidden');
+
+                    // Display name and verified email
+                    document.getElementById('userName').innerText = `Name: ${firstName} ${lastName}`;
+                    document.getElementById('verifiedEmail').innerHTML = `Verified Email: <strong>${user_email_id}</strong>`;
+                })
+                .catch(error => {
+                    console.error('Error fetching email:', error);
+                    alert("Error fetching verified email. Please try again.");
+                });
         } else {
             alert("CAPTCHA verification failed. Please try again.");
         }
-    }, 1000); // Simulate API response delay
+    }, 1000); // Simulate delay for CAPTCHA verification
 }
