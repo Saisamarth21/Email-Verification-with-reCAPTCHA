@@ -5,7 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Email Authentication</title>
     <link rel="stylesheet" href="style.css">
-    <!-- Add reCAPTCHA script -->
     <script src="https://www.google.com/recaptcha/api.js" async defer></script>
 </head>
 <body>
@@ -28,11 +27,12 @@
                 <input type="email" id="email" placeholder="Enter your email" required>
             </div>
 
-            <!-- Add reCAPTCHA widget -->
             <div class="g-recaptcha" data-sitekey="6Lf32GkqAAAAAE0JVN862Gkz9c702lXoNN0mqF0e"></div>
 
             <!-- Email OTP Button -->
-            <button type="button" onclick="verifyUser()">Verify Email</button>
+            <div class="pe_verify_email" data-client-id="11106498922140288630">
+                <script src="https://www.phone.email/verify_email_v1.js" async></script>
+            </div>
         </form>
 
         <div id="result" class="hidden">
