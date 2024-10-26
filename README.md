@@ -1,7 +1,7 @@
 
 # Email Authentication with reCAPTCHA
 
-This project demonstrates a web-based email authentication system that verifies email addresses using a third-party API from Phone.Email and secures submissions with Google reCAPTCHA v3. The project is implemented using HTML, CSS, JavaScript, Node.js, and Express, and is designed to be hosted on platforms supporting backend functionality.
+**This project demonstrates a web-based email authentication system that verifies email addresses using a third-party API from Phone.Email and secures submissions with Google reCAPTCHA v3. The project is implemented using HTML, CSS, JavaScript, Node.js, and Express, and is designed to be hosted on platforms supporting backend functionality.**
 
 Visit here : [Website](https://email-verification-zeta.vercel.app/)
 
